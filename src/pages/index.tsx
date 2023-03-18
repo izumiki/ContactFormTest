@@ -1,10 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Login from '../components/account/auth/Login'
-import Logout from '../components/account/auth/Logout'
-import DropZone from '../components/image/DropZone'
-import ImageRegister from '../components/image/ImageRegister'
 import MailForm from '../components/mail/MailForm'
+import React from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
