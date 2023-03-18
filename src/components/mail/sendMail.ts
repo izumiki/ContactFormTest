@@ -23,7 +23,6 @@ export const sendMail = async (props: MailFormValues) => {
       deliveryDate: props.deliveryDate,
       isPublic: props.isPublic,
     }
-
     try {
       await send(serviceID, templateID, params)
     } catch (error) {

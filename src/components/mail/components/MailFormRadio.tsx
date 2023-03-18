@@ -45,9 +45,11 @@ const MailFormRadio = ({
                 id={label}
                 type='radio'
                 value={label}
-                className='mb-1.5 accent-teal-600'
+                className='accent-teal-600'
                 checked={label === selected}
-                onClick={() => setSelected(label)}
+                onClick={() => {
+                  console.log(label)
+                  setSelected(label)}}
                 {...register(name, options)}
               />
               <label

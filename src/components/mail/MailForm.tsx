@@ -12,8 +12,20 @@ const MailForm = () => {
     register,
     handleSubmit,
     getValues,
+    reset,
     formState: { errors },
-  } = useForm<MailFormValues>()
+  } = useForm<MailFormValues>({
+    defaultValues: {
+      client: '',
+      clientEmail: '', 
+      clientWebsite: '', 
+      clientCompany: '',
+      title: '',
+      details: '',
+      budget: '',
+      deliveryDate: '',
+      isPublic: '公開してもよい',
+    }})
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
@@ -28,6 +40,7 @@ const MailForm = () => {
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           getValues={getValues}
+          reset={reset}
         />
       </RemoveScroll>
 

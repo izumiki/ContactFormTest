@@ -1,5 +1,5 @@
 import Modal from 'react-modal'
-import { UseFormGetValues } from 'react-hook-form'
+import { UseFormGetValues, UseFormReset } from 'react-hook-form'
 import { MailFormValues } from '../../../types/mail'
 import { sendMail } from '../sendMail'
 import ConfirmItem from './ConfirmItem'
@@ -11,11 +11,13 @@ export type ConfirmModalProps = {
   isOpen: boolean
   setIsOpen: (isOpen: boolean) => void
   getValues: UseFormGetValues<MailFormValues>
+  reset: UseFormReset<MailFormValues>
 }
 
-const ConfirmModal = ({ isOpen, setIsOpen, getValues }: ConfirmModalProps) => {
+const ConfirmModal = ({ isOpen, setIsOpen, getValues, reset }: ConfirmModalProps) => {
   const [completed, setCompleted] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false)
+
   const inputMailParams = async () => {
     const params: MailFormValues = {
       client: getValues('client'),
@@ -26,7 +28,7 @@ const ConfirmModal = ({ isOpen, setIsOpen, getValues }: ConfirmModalProps) => {
       details: getValues('details'),
       budget: getValues('budget'),
       deliveryDate: getValues('deliveryDate'),
-      isPublic: getValues('isPublic') ? '公開を望まない' : '公開してもよい',
+      isPublic: getValues('isPublic'),
     }
     await sendMail(params)
   }
@@ -59,11 +61,10 @@ const ConfirmModal = ({ isOpen, setIsOpen, getValues }: ConfirmModalProps) => {
 
         <ConfirmItem label={'ご予算'} name={getValues('budget')} unit={'円'} />
 
-        <ConfirmItem label={'希望納期'} name={getValues('deliveryDate')} />
+        <ConfirmItem label={'納期'} name={getValues('deliveryDate')} />
 
         <ConfirmItem
-          label={'公開可否'}
-          name={getValues('isPublic') ? '公開してもよい' : '公開を望まない'}
+          label={'公開可否'} name={getValues('isPublic')}
         />
       </div>
 
@@ -92,10 +93,10 @@ const ConfirmModal = ({ isOpen, setIsOpen, getValues }: ConfirmModalProps) => {
               setLoading(true)
               inputMailParams().then(() => {
                 setCompleted(true)
-
                 setTimeout(() => {
                   setLoading(false)
                   setIsOpen(false)
+                  reset()
                 }, 1000)
               })
             }}

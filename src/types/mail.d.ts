@@ -9,7 +9,7 @@ export type MailFormValues = {
   details: string
   budget: string
   deliveryDate: string
-  isPublic: boolean | string
+  isPublic: string
 }
 
 // type RadioButtonOption = {
