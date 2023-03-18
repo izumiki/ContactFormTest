@@ -20,16 +20,10 @@ const murecho = Murecho({
   subsets: ['latin'],
 })
 
-export default function App({
-  Component,
-  pageProps,
-}: AppProps<{
-}>) {
-
+export default function App({ Component, pageProps }: AppProps<{}>) {
   return (
     <main className={murecho.className}>
-
-        <Component {...pageProps} />
+      <Component {...pageProps} />
     </main>
   )
 }

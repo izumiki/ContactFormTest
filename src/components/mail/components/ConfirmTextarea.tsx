@@ -1,7 +1,3 @@
-import { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import Spinner from '../../Spinner'
-
 type ConfirmTextareaProps = {
   label: string
   name: string
@@ -9,18 +5,6 @@ type ConfirmTextareaProps = {
 }
 
 const ConfirmTextarea = (props: ConfirmTextareaProps) => {
-  const [loading, setLoading] = useState<boolean>(false)
-  const { getValues } = useForm()
-
-  // useEffect(() => {
-  //   // if (props.key !== undefined) setLoading(false)
-  //   console.log('name', getValues(props.name))
-  //   // console.log(loading)
-
-  // }, [props])
-
-  if (loading) return <Spinner />
-
   return (
     <div className='flex w-full flex-row'>
       <div className='flex w-24  px-2'>

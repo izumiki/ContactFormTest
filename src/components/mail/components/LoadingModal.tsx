@@ -1,10 +1,5 @@
 import Modal from 'react-modal'
-import { MailFormValues } from '../../../types/mail'
-import { sendMail } from '../sendMail'
-import ConfirmItem from './ConfirmItem'
 import Spinner from '../../Spinner'
-import ConfirmTextarea from './ConfirmTextarea'
-import { useState } from 'react'
 import Checkmark from '../../Checkmark'
 
 type LoadingModalProps = {
@@ -13,7 +8,6 @@ type LoadingModalProps = {
 }
 
 const LoadingModal = (props: LoadingModalProps) => {
-  // const [completed, setCompleted] = useState<boolean>(false)
   return (
     <Modal
       isOpen={props.isOpen}

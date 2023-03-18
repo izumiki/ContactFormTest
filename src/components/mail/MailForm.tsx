@@ -1,12 +1,11 @@
 import { useForm } from 'react-hook-form'
 import { MailFormValues } from '../../types/mail'
 import MailFormInput from './components/MailFormInput'
-import { sendMail } from './sendMail'
 import MailFormTextarea from './components/MailFormTextarea'
 import MailFormRadio from './components/MailFormRadio'
 import ConfirmModal from './components/ConfirmModal'
-import { useEffect, useState } from 'react'
-import Spinner from '../Spinner'
+import { useState } from 'react'
+import { RemoveScroll } from 'react-remove-scroll'
 
 const MailForm = () => {
   const {
@@ -17,7 +16,6 @@ const MailForm = () => {
   } = useForm<MailFormValues>()
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [mailParams, setMailParams] = useState<MailFormValues>()
 
   return (
     <div className=' flex w-full max-w-3xl flex-col items-center gap-2 bg-gradient-to-br	from-stone-50 via-stone-100  to-stone-200 py-4 px-6 shadow-lg '>
@@ -25,11 +23,14 @@ const MailForm = () => {
         Contact
       </h1>
 
-      <ConfirmModal
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        getValues={getValues}
-      />
+      <RemoveScroll removeScrollBar enabled={isOpen}>
+        <ConfirmModal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          getValues={getValues}
+        />
+      </RemoveScroll>
+
       <div className='w-full '>
         <form onSubmit={handleSubmit(() => setIsOpen(true))}>
           <div className='mb-4 flex w-full flex-auto flex-col items-center justify-center justify-items-center gap-2 py-6 px-4 outline-double outline-4 outline-offset-8 outline-teal-900'>
@@ -55,11 +56,13 @@ const MailForm = () => {
               name='clientEmail'
               register={register}
               errors={errors}
-              options={{ required: '入力してください',
+              options={{
+                required: '入力してください',
                 pattern: {
-                value: /[\w\-._]+@[\w\-._]+\.[A-Za-z]+/,
-                message: "メールアドレスを入力してください",
-              },}}
+                  value: /[\w\-._]+@[\w\-._]+\.[A-Za-z]+/,
+                  message: 'メールアドレスを入力してください',
+                },
+              }}
             />
             <MailFormInput
               label='website'
@@ -67,11 +70,13 @@ const MailForm = () => {
               name='clientWebsite'
               register={register}
               errors={errors}
-              options={{ required: false,
+              options={{
+                required: false,
                 pattern: {
-                value: /https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+/g,
-                message: "URLを入力してください",
-              }, }}
+                  value: /https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+/g,
+                  message: 'URLを入力してください',
+                },
+              }}
             />
             <MailFormInput
               label='会社名 / company'

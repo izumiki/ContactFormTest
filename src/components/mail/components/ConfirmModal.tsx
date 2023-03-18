@@ -6,7 +6,6 @@ import ConfirmItem from './ConfirmItem'
 import ConfirmTextarea from './ConfirmTextarea'
 import { useState } from 'react'
 import LoadingModal from './LoadingModal'
-import Spinner from '../../Spinner'
 
 export type ConfirmModalProps = {
   isOpen: boolean
@@ -64,7 +63,7 @@ const ConfirmModal = ({ isOpen, setIsOpen, getValues }: ConfirmModalProps) => {
 
         <ConfirmItem
           label={'公開可否'}
-          name={getValues('isPublic') ? '公開を望まない' : '公開してもよい'}
+          name={getValues('isPublic') ? '公開してもよい' : '公開を望まない'}
         />
       </div>
 
@@ -100,7 +99,7 @@ const ConfirmModal = ({ isOpen, setIsOpen, getValues }: ConfirmModalProps) => {
                 }, 1000)
               })
             }}
-            className='w-24 items-center rounded  p-2 font-bold bg-teal-900 text-white
+            className='w-24 items-center rounded  bg-teal-900 p-2 font-bold text-white
             hover:bg-teal-700 focus:outline-none'
           >
             送信

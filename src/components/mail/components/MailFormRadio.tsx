@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { FormState, UseFormRegister } from 'react-hook-form'
 import { MailFormRadioProps, MailFormInputProps } from '../../../types/mail'
 import RequiredLabel from './RequiredLabel'
 
@@ -13,7 +12,7 @@ const MailFormRadio = ({
   options,
 }: MailFormRadioProps & {}) => {
   // const { errors } = formState
-  const[selected, setSelected] = useState<string>(radioLabel[0])
+  const [selected, setSelected] = useState<string>(radioLabel[0])
   const error = errors[name]
   return (
     <div className='flex w-full items-start justify-center py-1 px-4'>
@@ -48,7 +47,7 @@ const MailFormRadio = ({
                 type='radio'
                 value={label}
                 className='mb-1.5 accent-teal-600'
-                checked={label===selected}
+                checked={label === selected}
                 onClick={() => setSelected(label)}
                 {...register(name, options)}
               />

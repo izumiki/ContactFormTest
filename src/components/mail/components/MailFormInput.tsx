@@ -1,4 +1,3 @@
-import { FormState, UseFormRegister } from 'react-hook-form'
 import { MailFormInputProps } from '../../../types/mail'
 import RequiredLabel from './RequiredLabel'
 

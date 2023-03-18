@@ -15,7 +15,6 @@ export default function Home() {
 
       <main className={styles.main}>
         <MailForm />
-
       </main>
 
       <footer className={styles.footer}>
