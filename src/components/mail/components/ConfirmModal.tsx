@@ -49,7 +49,7 @@ const ConfirmModal = ({ isOpen, setIsOpen, getValues }: ConfirmModalProps) => {
 
         <ConfirmItem label={'email'} name={getValues('clientEmail')} />
 
-        <ConfirmItem label={'company'} name={getValues('clientCompany')} />
+        <ConfirmItem label={'会社名'} name={getValues('clientCompany')} />
 
         <ConfirmItem label={'website'} name={getValues('clientWebsite')} />
 
