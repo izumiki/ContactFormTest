@@ -120,7 +120,6 @@ const MailForm = () => {
               label='ご予算 / budget'
               type='text'
               unit='円'
-              helpText='数字入力'
               name='budget'
               register={register}
               errors={errors}
@@ -143,7 +142,7 @@ const MailForm = () => {
             <MailFormRadio
               label='公開可否 / publisable'
               type='chackbox'
-              helpText='実績としてのご依頼の公開について'
+              helpText='ご依頼の公開について'
               name='isPublic'
               radioLabel={['公開してもよい', '公開を望まない']}
               register={register}

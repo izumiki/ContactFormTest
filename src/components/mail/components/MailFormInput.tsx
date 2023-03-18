@@ -23,14 +23,14 @@ const MailFormInput = ({
         <div className='flex h-12 w-36 flex-wrap'>
           <label
             htmlFor={name}
-            className='flex w-36 px-2 text-sm font-bold text-slate-700 '
+            className='flex w-36 px-1 text-sm font-bold text-slate-700 '
           >
             {label}
           </label>
 
           <label
             htmlFor={name}
-            className='flex w-36  px-2 text-xs text-slate-500'
+            className='flex w-36 px-1 text-xs text-slate-500'
           >
             {helpText}
           </label>
